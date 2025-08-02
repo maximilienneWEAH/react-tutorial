@@ -1,0 +1,28 @@
+import react from "react";
+import SearchBox from "./SearchBox";
+
+
+const Header = () =>{
+ const menus =[
+    'Hot Dishes',
+    'cold Dishes',
+    'Soup',
+    'Grill',
+    'Appetizer',
+    'Dessert',
+ ];
+
+    return(
+        <div className=" header">
+            <h1> Riverside Flamez</h1>
+            <p> Tuesday, 2 Feb 2021</p>
+            <div className="menu">
+{menus.map((menu) =>  (
+<li>{menu}</li>))}
+            </div>
+            <SearchBox />
+        </div>
+    )
+
+}
+export default Header;

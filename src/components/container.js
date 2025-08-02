@@ -4,8 +4,6 @@ import React from 'react';
 const Container = ({ children, style }) => {
   return (
     <div style={{
-      maxWidth: '192px',
-      maxHeight: 273,
       margin: '0 auto',
       paddingTop: '120px',
       backgroundColor: '#1d1c27',
@@ -16,7 +14,8 @@ const Container = ({ children, style }) => {
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
-      fontSize: '20px'
+      fontSize: '20px',
+      height: '250px'
     }}>
         
       {children}
