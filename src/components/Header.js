@@ -1,4 +1,5 @@
- import SearchBox from "./SearchBox";
+ import RightSidebar from "./RightSidebar";
+import SearchBox from "./SearchBox";
 import Container from "./container";
 
 
@@ -10,6 +11,7 @@ const Header = () => {
       <div className="first">
         <h1> Riverside Flamez</h1>
         <p> Tuesday, 2 Feb 2021</p>
+        </div>
         <div className='containers'>
           <Container>
             <img src='/images/image 4.png' alt='img1' width={100} />
@@ -35,9 +37,9 @@ const Header = () => {
 
           </Container>
         </div>
-      </div>
-     
+     <div className="search">
       <SearchBox />
+      </div>
     </div>
   )
 

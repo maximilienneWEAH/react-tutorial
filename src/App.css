@@ -18,7 +18,7 @@ img{
   color: white;
   padding-left: 30px;
   z-index: 0;
-  gap: 600px;
+  gap: 5px;
 }
 .menu ul li{
   display: flex;
@@ -32,9 +32,13 @@ img{
   display: flex;
   flex-direction: row;
   align-items: center;
- gap: 150px;
+ gap: 40px;
 }
 .Body{
   display: flex;
  justify-content: space-between;
+}
+.search{
+  padding-top: 50px;
+  padding-right: 30px;
 }

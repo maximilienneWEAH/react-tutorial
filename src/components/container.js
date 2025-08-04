@@ -6,7 +6,7 @@ const Container = ({ children, style }) => {
     <div style={{
       backgroundColor: '#1d1c27',
       borderRadius: '20px',
-      width:'200px',
+      width:'170px',
       boxShadow: '0 0 10px rgba(255, 246, 246, 0.88)',
       display: 'flex',
       flexDirection: 'column',
