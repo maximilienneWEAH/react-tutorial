@@ -63,6 +63,9 @@ nav ul li:hover {
 }
 .tittle {
   color: white;
+  display: flex;
+  flex-direction: row;
+  gap:500px;
 }
 .sidebar{
   color: white;

@@ -21,6 +21,7 @@ const Header = () => {
             <li>Dessert</li>
           </ul>
           </nav>
+          <hr />
           </div>
           <div className="search">
       <SearchBox />
@@ -28,6 +29,7 @@ const Header = () => {
     </div>
     <div className="tittle">
     <h1> choose Dishes</h1>
+    <button onclick="shoot()" style={{ backgroundColor: '#1d1c27', width: '180px', height: '45px', borderRadius: '10px', color: 'rgb(231, 216, 216)' }}>Cheapers</button>
     </div>
       
         <div className='containers'>
