@@ -4,8 +4,7 @@ import React from "react";
 const Sidebar = () => {
 
     return(
-<div className="sidebar" style={{ backgroundColor: '#1f1d2b', width: '150px', height: '700px', paddingTop: '0px',}}>
-    <h2>This is my sidebar</h2>
+<div className="sidebar" style={{ backgroundColor: '#1f1d2b', width: '150px', height: '1000px', paddingTop: '0px',}}>
     <ul>
         <li> 
             <img src="./images/bx_bxs-store-alt.png" alt="frame 65(1)"/>

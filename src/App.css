@@ -5,40 +5,69 @@ img{
 .head {
   display: flex;
   flex-direction: row;
-  gap: 0px;
+  gap: 20px;
 }
 .right-sidebar {
   width: 100px;
-  height: 700px;
+  height: 1000px;
   background-color: #1d1c27;
   color: white;
 }
 .header {
   display: flex;
   color: white;
-  padding-left: 30px;
-  z-index: 0;
   gap: 5px;
 }
-.menu ul li{
-  display: flex;
-  flex-direction: column;
-  color: white;
-}
-.menu:hover ul li{
-  color: #ea736d;
-}
 .containers{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
- gap: 40px;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+ gap: 50px;
+ padding-top: 10px;
+ padding-left: 10px;
+ z-index: 2;
 }
+.right{
+  padding-left: 110px;
+}
+
 .Body{
   display: flex;
  justify-content: space-between;
 }
 .search{
   padding-top: 50px;
-  padding-right: 30px;
+  padding-left: 150px;
+  height: 30px;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0px;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+}
+
+nav ul li {
+  color: rgb(179, 171, 171);
+  text-decoration: none;
+  margin-left: 10px;
+  padding-left: 10px;
+}
+
+nav ul li:hover {
+  color: #ea736d;
+  text-decoration: none;
+}
+.tittle {
+  color: white;
+}
+.sidebar{
+  color: white;
+}
+.containers img{
+  padding-bottom: 20px;
+  z-index: 5;
 }
