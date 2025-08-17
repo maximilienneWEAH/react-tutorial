@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import SearchBox from "./SearchBox";
 import Container from "./container";
- 
+import FoodCard from "../components/cards/food-card";
+
 const Header = () => {
 
   const [cart, setCart] = useState([]);
@@ -19,6 +20,41 @@ const Header = () => {
     });
   };
 
+  // Create a list of objects like this
+  const foodItems = [
+    {
+      image: "/images/image 4.png",
+      name: "Spicy seasoned seafood noodles",
+      price: "$2.29",
+      available: "20"
+    },
+    {
+      image: "/images/image 4.png",
+      name: "Spicy seasoned seafood noodles",
+      price: "$2.29",
+      available: "20"
+    },
+    {
+      image: "/images/image 4.png",
+      name: "Spicy seasoned seafood noodles",
+      price: "$2.29",
+      available: "20"
+    },
+    {
+      image: "/images/image 4.png",
+      name: "Spicy seasoned seafood noodles",
+      price: "$2.29",
+      available: "20"
+    },
+    {
+      image: "/images/image 4.png",
+      name: "Spicy seasoned seafood noodles",
+      price: "$2.29",
+      available: "20"
+    }
+
+  ];
+
   return (
     <div>
       <div className="header">
@@ -27,7 +63,7 @@ const Header = () => {
           <p>Tuesday, 2 Feb 2021</p>
           <nav>
             <ul>
-              <li>Hot Dishes</li> 
+              <li>Hot Dishes</li>
               <li>Cold Dishes</li>
               <li>Soup</li>
               <li>Grill</li>
@@ -58,7 +94,22 @@ const Header = () => {
         </button>
       </div>
 
+      {/* This is how you should render the list */}
+
       <div className="containers">
+        {foodItems.map((e, i) =>
+          <FoodCard
+            key={i}
+            image={e.image}
+            name={e.name}
+            available={e.available}
+            price={e.price}
+            handleAddToCart={handleAddToCart}
+          ></FoodCard>)}
+      </div>
+
+      <div className="containers">
+        {/* this is cumbersome and defeats the purpose of components and props */}
         <Container
           item={{ id: 1, name: "Spicy seasoned seafood noodles", price: "2.29" }}
           onAddToCart={handleAddToCart}
@@ -130,7 +181,7 @@ const Header = () => {
         </Container>
 
         <Container
-          item={{ id: 8, name: "Spicy instant noodle with special omelette", price: 3.59}}
+          item={{ id: 8, name: "Spicy instant noodle with special omelette", price: 3.59 }}
           onAddToCart={handleAddToCart}
         >
           <img src="/images/image 4.png" alt="img8" width={100} />
@@ -141,7 +192,7 @@ const Header = () => {
       </div>
 
 
- <div style={{ background: "#eee", padding: "5px", marginTop: "10px" }}>
+      <div style={{ background: "#eee", padding: "5px", marginTop: "10px" }}>
         <h3>Cart</h3>
         {cart.length === 0 ? (
           <p>No items yet</p>
@@ -152,7 +203,7 @@ const Header = () => {
             </div>
           ))
         )}
-        </div> 
+      </div>
 
     </div>
   );
