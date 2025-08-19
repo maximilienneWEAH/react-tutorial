@@ -11,11 +11,13 @@ img{
   width: 100px;
   height: 1000px;
   background-color: #1d1c27;
+  z-index: 10;
 }
 .header {
   display: flex;
   color: white;
   gap: 5px;
+  z-index: 5;
 }
 .containers{
   display: grid;

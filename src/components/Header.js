@@ -1,62 +1,34 @@
-import React, { useState } from "react";
+import React  from "react";
 import SearchBox from "./SearchBox";
-import Container from "./container";
 import FoodCard from "../components/cards/food-card";
 
-const Header = () => {
+  const Header = ({ cart, setCart }) => {
+    const handleAddToCart = (item) => {
+      setCart((prevCart) => {
+        const existingIndex = prevCart.findIndex((cartItem) => cartItem.id === item.id);
+        if (existingIndex !== -1) {
+          const updatedCart = [...prevCart];
+          updatedCart[existingIndex].count += 0.5;
+          return updatedCart;
+        } else {
+          return [...prevCart, { ...item, count: 1 }];
+        }
+      });
+    };
 
-  const [cart, setCart] = useState([]);
-
-  const handleAddToCart = (item) => {
-    setCart((prevCart) => {
-      const existingIndex = prevCart.findIndex((cartItem) => cartItem.id === item.id);
-      if (existingIndex !== -1) {
-        const updatedCart = [...prevCart];
-        updatedCart[existingIndex].count += 0.5;
-        return updatedCart;
-      } else {
-        return [...prevCart, { ...item, count: 1 }];
-      }
-    });
-  };
-
-  // Create a list of objects like this
   const foodItems = [
-    {
-      image: "/images/image 4.png",
-      name: "Spicy seasoned seafood noodles",
-      price: "$2.29",
-      available: "20"
-    },
-    {
-      image: "/images/image 4.png",
-      name: "Spicy seasoned seafood noodles",
-      price: "$2.29",
-      available: "20"
-    },
-    {
-      image: "/images/image 4.png",
-      name: "Spicy seasoned seafood noodles",
-      price: "$2.29",
-      available: "20"
-    },
-    {
-      image: "/images/image 4.png",
-      name: "Spicy seasoned seafood noodles",
-      price: "$2.29",
-      available: "20"
-    },
-    {
-      image: "/images/image 4.png",
-      name: "Spicy seasoned seafood noodles",
-      price: "$2.29",
-      available: "20"
-    }
-
+    { id: 1, image: "/images/images.png", name: "Spicy seasoned seafood noodles", price: "$2.29", available: "20" },
+    { id: 2, image: "/images/image 4.png", name: "Salted Pasta with mushroom sauce", price: "$2.29", available: "11" },
+    { id: 3, image: "/images/images(1).png", name: "Beef dumpling in hot and sour soup", price: "$2.99", available: "16" },
+    { id: 4, image: "/images/images(1).png", name: "Healthy noodle with spinach leaf", price: "$3.29", available: "22" },
+    { id: 5, image: "/images/images(2).png", name: "Hot spicy fried rice with omelet", price: "$3.29", available: "13" },
+    { id: 6, image: "/images/images(2).png", name: "Hot spicy fried rice with omelet", price: "$3.49", available: "17" },
+    { id: 7, image: "/images/image 4(1).png", name: "Spicy instant noodle with special omelette", price: "$3.59", available: "17" }, 
+    { id: 8, image: "/images/image 4(1).png", name: "Spicy instant noodle with special omelette", price: "$3.59", available: "17" }
   ];
 
   return (
-    <div>
+    <div className="layout">
       <div className="header">
         <div className="first">
           <h1>Riverside Flamez</h1>
@@ -94,118 +66,24 @@ const Header = () => {
         </button>
       </div>
 
-      {/* This is how you should render the list */}
-
+      {/* Food items */}
       <div className="containers">
-        {foodItems.map((e, i) =>
+        {foodItems.map((e) => (
           <FoodCard
-            key={i}
+            key={e.id}
+            id={e.id}
             image={e.image}
             name={e.name}
             available={e.available}
             price={e.price}
             handleAddToCart={handleAddToCart}
-          ></FoodCard>)}
+          />
+        ))}
       </div>
 
-      <div className="containers">
-        {/* this is cumbersome and defeats the purpose of components and props */}
-        <Container
-          item={{ id: 1, name: "Spicy seasoned seafood noodles", price: "2.29" }}
-          onAddToCart={handleAddToCart}
-        >
-          <img src="/images/image 4.png" alt="img1" width={100} />
-          <h1>Spicy seasoned seafood noodles</h1>
-          <h2>$2.29</h2>
-          <p>20 Bowls available.</p>
-        </Container>
-
-        <Container
-          item={{ id: 2, name: "Salted Pasta with mushroom sauce" }}
-          onAddToCart={handleAddToCart}
-        >
-          <img src="./images/images(1).png" alt="img2" width={100} />
-          <h1>Salted Pasta with mushroom sauce</h1>
-          <h2>$2.29</h2>
-          <p>11 Bowls available</p>
-        </Container>
-
-        <Container
-          item={{ id: 3, name: "Beef dumpling in hot and sour soup" }}
-          onAddToCart={handleAddToCart}
-        >
-          <img src="/images/image 4.png" alt="img3" width={100} />
-          <h1>Beef dumpling in hot and sour soup</h1>
-          <h2>$2.99</h2>
-          <p>16 Bowls available.</p>
-        </Container>
-
-        <Container
-          item={{ id: 4, name: "Beef dumpling in hot and sour soup" }}
-          onAddToCart={handleAddToCart}
-        >
-          <img src="/images/images(2).png" alt="img4" width={100} />
-          <h1>Beef dumpling in hot and sour soup</h1>
-          <h2>$2.99</h2>
-          <p>16 Bowls available.</p>
-        </Container>
-
-        <Container
-          item={{ id: 5, name: "Healthy noodle with spinach leaf" }}
-          onAddToCart={handleAddToCart}
-        >
-          <img src="/images/images(1).png" alt="img5" width={100} />
-          <h1>Healthy noodle with spinach leaf</h1>
-          <h2>$3.29</h2>
-          <p>22 Bowls available.</p>
-        </Container>
-
-        <Container
-          item={{ id: 6, name: "Hot spicy fried rice with omelet" }}
-          onAddToCart={handleAddToCart}
-        >
-          <img src="/images/image 4.png" alt="img6" width={100} />
-          <h1>Hot spicy fried rice with omelet</h1>
-          <h2>$3.49</h2>
-          <p>13 Bowls available.</p>
-        </Container>
-
-        <Container
-          item={{ id: 7, name: "Spicy instant noodle with special omelette" }}
-          onAddToCart={handleAddToCart}
-        >
-          <img src="/images/images.png" alt="img7" width={100} />
-          <h1>Spicy instant noodle with special omelette</h1>
-          <h2>$3.59</h2>
-          <p>17 Bowls available.</p>
-        </Container>
-
-        <Container
-          item={{ id: 8, name: "Spicy instant noodle with special omelette", price: 3.59 }}
-          onAddToCart={handleAddToCart}
-        >
-          <img src="/images/image 4.png" alt="img8" width={100} />
-          <h1>Spicy instant noodle with special omelette</h1>
-          <h2>$3.59</h2>
-          <p>17 Bowls available.</p>
-        </Container>
-      </div>
-
-
-      <div style={{ background: "#eee", padding: "5px", marginTop: "10px" }}>
-        <h3>Cart</h3>
-        {cart.length === 0 ? (
-          <p>No items yet</p>
-        ) : (
-          cart.map((item) => (
-            <div key={item.id}>
-              {item.name} - price: {item.price} - Count: {item.count}
-            </div>
-          ))
-        )}
-      </div>
-
+     
     </div>
   );
 };
+
 export default Header;

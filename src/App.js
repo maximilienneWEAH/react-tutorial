@@ -1,18 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Sidebar from './sidebar';
 import './App.css';
 import RightSidebar from './components/RightSidebar';
 import Header from './components/Header';
 
 function App() {
+
+  const [cart, setCart] = useState([]);
   return (
     <>
        
         <div className='head'>
         <Sidebar />
-        <Header />
+        <Header cart={cart} setCart={setCart} />
         <div className="right">
-        <RightSidebar />
+        <RightSidebar cart={cart} />
         </div>
         </div>
    </>
