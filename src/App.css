@@ -71,3 +71,21 @@ nav ul li:hover {
   padding-bottom: 20px;
   z-index: 5;
 }
+.mycard{
+  width: 500px;
+  height: 300x;
+  background: #1d1c27;
+}
+.cart{
+  display: flex;
+  flex-direction: row;
+  gap: 280px;
+}
+.card{
+  display: flex;
+  gap: 70px;
+}
+.price{
+  display: flex;
+  flex-direction: row;
+}

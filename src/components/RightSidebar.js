@@ -1,16 +1,15 @@
 import React from "react";
+import Comment from "./comment";
  
 
 const RightSidebar = ({ cart =[]}) => {
   
   const subtotal = cart.reduce((sum, item) => {
-    // Convert "$2.29" → 2.29
+    
     const price = parseFloat(item.price.replace("$", ""));
     return sum + price * item.count;
   }, 0);
-
-
-  
+ 
   return (
     <div
       className="right-sidebar"
@@ -28,6 +27,16 @@ const RightSidebar = ({ cart =[]}) => {
        <h2 style={{ marginBottom: "20px" }}>Orders #34562</h2>
 
       <h3>🛒 Cart</h3>
+
+
+      <div className="mycard">
+      <div className="cart">
+        <p>item</p>
+       <div className="card">
+        <p>Qty</p>
+        <p>Price</p>
+        </div>
+        </div>
       {cart.length === 0 ? (
         <p>No items yet</p>
       ) : (
@@ -39,7 +48,7 @@ const RightSidebar = ({ cart =[]}) => {
                 alignItems: "center",
                 gap: "10px",
                 marginBottom: "10px",
-                background: "#2a2935",
+                background: "#1d1c27",
                 padding: "5px",
                 borderRadius: "8px",
               }}
@@ -54,28 +63,37 @@ const RightSidebar = ({ cart =[]}) => {
               <div>
                 <p>{item.name}</p>
                 <p style={{ fontSize: "14px", color: "gray" }}>
-                  {item.price} × {item.count}
+                  {item.price}   
                 </p>
-              </div>
-          
-<button
-                style={{
-                  background: "transparent",
-                  border: "none",
-                  color: "red",
-                  fontSize: "18px",
-                  cursor: "pointer",
-                }}
+                 
+        <Comment />
+                </div>
+                <button
+          style={{   
+            padding: "12px",
+            borderRadius: "8px",
+            background: "#090e25",
+            color: "white",
+          }}
+        >
+          {item.count}
+        </button>
+                <p>
+                {item.price} × {item.count}
+                </p>
+        
+<button style={{ background: "#090e25", fontSize: "18px", cursor: "pointer", }}
                 onClick={() => console.log("remove item logic here")}
               >
                 🗑️
               </button>
+            
             </div>
           ))
         )}
-     
+     </div>
 
-      {/* Footer with subtotal */}
+       
       <div style={{ marginTop: "auto" }}>
         <div
           style={{
