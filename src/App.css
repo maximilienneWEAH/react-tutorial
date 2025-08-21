@@ -84,8 +84,15 @@ nav ul li:hover {
 .card{
   display: flex;
   gap: 70px;
+  gap: 20px;
 }
 .price{
   display: flex;
   flex-direction: row;
 }
+.allcard{
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+}
+ 

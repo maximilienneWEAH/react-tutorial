@@ -1,11 +1,11 @@
 import React from "react";
 import Comment from "./comment";
- 
 
-const RightSidebar = ({ cart =[]}) => {
-  
+
+const RightSidebar = ({ cart = [], removeFromCart}) => {
+
   const subtotal = cart.reduce((sum, item) => {
-    
+
     const price = parseFloat(item.price.replace("$", ""));
     return sum + price * item.count;
   }, 0);
@@ -14,33 +14,40 @@ const RightSidebar = ({ cart =[]}) => {
     <div
       className="right-sidebar"
       style={{
+
+
+        position: "fixed",
+        top: 0,
+        right: 0,
+        height: "100vh",
+        width: "480px",
+        borderRadius: "0px 0px 0px 10px",
+        transition: "width 0.3s ease-in-out",
+        overflowY: "auto",
+        zIndex: 1000,
         flex: 1,
         background: "#1d1c27",
         padding: "10px",
         color: "white",
-        borderRadius: "10px",
-        transition: "all 0.3s ease-in-out",
-        maxHeight: "10000px",  
-        overflowY: "auto",  
       }}
     >
-       <h2 style={{ marginBottom: "20px" }}>Orders #34562</h2>
+      <h2 style={{ marginBottom: "20px" }}>Orders #34562</h2>
 
       <h3>🛒 Cart</h3>
 
 
       <div className="mycard">
-      <div className="cart">
-        <p>item</p>
-       <div className="card">
-        <p>Qty</p>
-        <p>Price</p>
+        <div className="cart">
+          <p>item</p>
+          <div className="card">
+            <p>Qty</p>
+            <p>Price</p>
+          </div>
         </div>
-        </div>
-      {cart.length === 0 ? (
-        <p>No items yet</p>
-      ) : (
-        cart.map((item) => (
+        {cart.length === 0 ? (
+          <p>No items yet</p>
+        ) : (
+          cart.map((item) => (
             <div
               key={item.id}
               style={{
@@ -63,37 +70,36 @@ const RightSidebar = ({ cart =[]}) => {
               <div>
                 <p>{item.name}</p>
                 <p style={{ fontSize: "14px", color: "gray" }}>
-                  {item.price}   
+                  {item.price}
                 </p>
-                 
-        <Comment />
+               <div className="allcard">
+                <Comment />
+                <button style={{ background: "#090e25", fontSize: "18px", cursor: "pointer", }}
+                  onClick={() => removeFromCart(item.id)}
+                >
+                  🗑️
+                </button>
                 </div>
-                <button
-          style={{   
-            padding: "12px",
-            borderRadius: "8px",
-            background: "#090e25",
-            color: "white",
-          }}
-        >
-          {item.count}
-        </button>
-                <p>
-                {item.price} × {item.count}
-                </p>
-        
-<button style={{ background: "#090e25", fontSize: "18px", cursor: "pointer", }}
-                onClick={() => console.log("remove item logic here")}
+              </div>
+              <button
+                style={{
+                  padding: "12px",
+                  borderRadius: "8px",
+                  background: "#090e25",
+                  color: "white",
+                }}
               >
-                🗑️
+                {item.count}
               </button>
-            
+              <p>
+                {item.price} × {item.count}
+              </p>
             </div>
           ))
         )}
-     </div>
+      </div>
 
-       
+
       <div style={{ marginTop: "auto" }}>
         <div
           style={{
